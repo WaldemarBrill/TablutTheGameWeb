@@ -4,6 +4,7 @@
 <html lang="en">
     <head>
         <h>@title</h>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
         <script src="@routes.Assets.versioned("javascripts/tablut_game.js")"></script>
         <table id="linker">
@@ -15,6 +16,6 @@
         </table>
     </head>
     <body>
-        <p>@content</p>
+        <div>@content</div>
     </body>
 </html>

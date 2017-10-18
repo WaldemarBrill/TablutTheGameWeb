@@ -4,10 +4,10 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
-#GET     /tablut                     controllers.TablutController.game
-#GET		/tablut/:command			controllers.TablutController.command(command:String)
-#GET     /help                       controllers.TablutController.help
-#GET     /controls                   controllers.TablutController.controls
+GET     /tablut                     controllers.TablutController.game
+GET		/tablut/:command			controllers.TablutController.command(command:String)
+GET     /help                       controllers.TablutController.help
+GET     /controls                   controllers.TablutController.controls
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

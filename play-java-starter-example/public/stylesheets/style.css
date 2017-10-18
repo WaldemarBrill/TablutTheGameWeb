@@ -35,6 +35,10 @@ body {
 	border: 5px solid black;
 	border-collapse: collapse;
 }
+#help {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+}
 .fieldbutton {
 	padding: 16px 16px;
 }
