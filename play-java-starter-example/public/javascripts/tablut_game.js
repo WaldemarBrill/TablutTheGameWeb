@@ -1,12 +1,3 @@
-var el = document.getElementById("gamefieldButton");
-if(el) {
-	el.addEventListener("click", test, false);
-}
-
-function myFunction() {
-    document.getElementById("demo").innerHTML = "myFunction ist aufgerufen";
-}
-
 function test() {
 	alert("test");
 }
@@ -48,3 +39,7 @@ function getXY() {
 	alert(xStart);
 	alert(yStart);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById("button_gamefield").addEventListener("click", createGamefield);
+});

@@ -3,10 +3,14 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
+    	<meta http-equiv="Content-Security-Policy" content="script-src 'self' javascripts/tablut_game.js; object-src 'self'">
+    	<script src="@routes.Assets.versioned("javascripts/tablut_game.js")"></script>
+    	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
         <h>@title</h>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
-        <script src="@routes.Assets.versioned("javascripts/tablut_game.js")"></script>
+        @*
+         *<meta http-equiv="X-Content-Security-Policy" content="default-src 'nonce.inline'; script-src 'self'">
+    	 *<meta http-equiv="X-WebKit-CSP" content="default-src 'nonce-inline'; script-src 'self'">
+         *@
         <table id="linker">
             <tr>
                 <th><a href="/tablut">Zum Spiel</a></th>
