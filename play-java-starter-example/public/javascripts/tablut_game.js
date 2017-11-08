@@ -5,6 +5,7 @@ function test() {
 function createGamefield() {
 	var xStart = "nichts";
 	var yStart = "nichts";
+	var index = 0;
 	for (var x = 0; x < 9; x++) {
 		var Zeile = document.createElement("tr");
 		Zeile.id = "Zeile" + x;
@@ -24,22 +25,17 @@ function createGamefield() {
 					xStart = this.getAttribute("x");
 					yStart = this.getAttribute("y");
 				} else {
+					alert(xStart + "," + yStart + "to" + this.getAttribute("x") + "," + this.getAttribute("y"))
 					xStart = "nichts";
 					yStart = "nichts";
 				}
 			}, false);
-			var inhalt = document.createTextNode("...");
+			var inhalt = document.createTextNode(index);
+			index = index + 1;
 			Zelle.appendChild(inhalt);
 			document.getElementById("Zeile"+x).appendChild(Zelle);
 		}
 	}
 }
 
-function getXY() {
-	alert(xStart);
-	alert(yStart);
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById("button_gamefield").addEventListener("click", createGamefield);
-});
+document.addEventListener('DOMContentLoaded', createGamefield);

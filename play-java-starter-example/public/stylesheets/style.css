@@ -1,5 +1,5 @@
 body {
-	background-image: url("bild.jpg");
+	background-image: url("background1.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 50% 0px;
@@ -40,11 +40,20 @@ body {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 .fieldbutton {
-	padding: 16px 16px;
+	text-align: center;
+	width: 9%;
+	padding: 10px;
+	display: inline-block;
 }
 .fieldbutton.white {
 	background-color: white;
+	color: black;
 }
 .fieldbutton.black {
 	background-color: black;
+	color: white;
+}
+#Gamefield {
+	margin: auto;
+	width: 100%;
 }
