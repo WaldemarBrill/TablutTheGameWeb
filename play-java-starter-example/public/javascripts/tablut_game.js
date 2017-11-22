@@ -3,15 +3,15 @@ function test() {
 }
 
 function createGamefield() {
-	var xStart = "nichts";
-	var yStart = "nichts";
-	var index = 0;
-	for (var x = 0; x < 9; x++) {
-		var Zeile = document.createElement("tr");
+	let xStart = "nichts";
+	let yStart = "nichts";
+	let index = 0;
+	for (let x = 0; x < 9; x++) {
+		let Zeile = document.createElement("tr");
 		Zeile.id = "Zeile" + x;
 		document.getElementById("Gamefield").appendChild(Zeile);
-		for (var y = 0; y < 9; y++) {
-			var Zelle = document.createElement("button");
+		for (let y = 0; y < 9; y++) {
+			let Zelle = document.createElement("button");
 			Zelle.id = x+","+y;
 			Zelle.setAttribute("x", x);
 			Zelle.setAttribute("y", y);
@@ -30,7 +30,7 @@ function createGamefield() {
 					yStart = "nichts";
 				}
 			}, false);
-			var inhalt = document.createTextNode(index);
+			let inhalt = document.createTextNode(index);
 			index = index + 1;
 			Zelle.appendChild(inhalt);
 			document.getElementById("Zeile"+x).appendChild(Zelle);
