@@ -56,6 +56,7 @@ class TablutController @Inject()(cc: ControllerComponents) (implicit system: Act
 	class TablutWebSocketActor(out: ActorRef) extends Actor {
 		def receive = {
 			case msg: String =>
+				out ! (gc.buildString());
 				println("Sent Message")
 		}
 		

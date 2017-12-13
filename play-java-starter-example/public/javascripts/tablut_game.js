@@ -5,7 +5,6 @@ function test() {
 function createGamefield() {
 	let xStart = "nichts";
 	let yStart = "nichts";
-	let index = 0;
 	for (let y = 0; y < 9; y++) {
 		let Zeile = document.createElement("tr");
 		Zeile.id = "Zeile" + y;
@@ -25,17 +24,42 @@ function createGamefield() {
 					xStart = this.getAttribute("x");
 					yStart = this.getAttribute("y");
 				} else {
-					alert(xStart + "," + yStart + "to" + this.getAttribute("x") + "," + this.getAttribute("y"))
+					let command = xStart + "-" + yStart + "-" + this.getAttribute("x") + "-" + this.getAttribute("y");
+					window.location.href = "/tablut/" + command;
 					xStart = "nichts";
 					yStart = "nichts";
 				}
 			}, false);
-			let inhalt = document.createTextNode(index);
-			index = index + 1;
-			Zelle.appendChild(inhalt);
 			document.getElementById("Zeile"+y).appendChild(Zelle);
 		}
 	}
+}
+
+function fillGrid(s){
+	let fieldArray = s.split(" ");
+	let x = 0;
+	let y = 0;
+	fieldArray.forEach(function(entry){
+		
+		switch(entry) {
+		case "X":
+		case "A":
+		case "D":
+		case "K":
+			let inhalt = document.createTextNode(entry);
+			let index = x + "," + y;
+			document.getElementById(index).appendChild(inhalt);
+		case "_":
+			x = x + 1;
+			if(x === 9){
+				x = 0;
+				y = y + 1;
+			}
+			break;
+		Default:
+			break;
+		}
+	});
 }
 
 function connectWebSocket() {
@@ -44,7 +68,10 @@ function connectWebSocket() {
 
     websocket.onopen = function(event) {
         console.log("Connected to Websocket");
-    }
+        websocket.send(JSON.stringify({
+        	update: "do it"
+        }));
+    };
 
     websocket.onclose = function () {
         console.log('Connection with Websocket Closed!');
@@ -55,8 +82,10 @@ function connectWebSocket() {
     };
 
     websocket.onmessage = function (e) {
-        console.log("Connection send a Message: " + e)
-
+        console.log("Connection send a Message: " + e.data)
+        if (typeof e.data === "string") {
+        	fillGrid(e.data);
+        }
     };
 }
 
