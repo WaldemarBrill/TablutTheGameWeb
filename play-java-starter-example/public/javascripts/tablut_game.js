@@ -14,11 +14,7 @@ function createGamefield() {
 			Zelle.id = x+","+y;
 			Zelle.setAttribute("x", x);
 			Zelle.setAttribute("y", y);
-			if ((y%2==0 || !(x%2==0)) && ((x%2==0 || !(y%2==0)))) {
-				Zelle.setAttribute("class", "fieldbutton white");
-			} else {
-				Zelle.setAttribute("class", "fieldbutton black");
-			}
+			Zelle.setAttribute("class", "fieldbutton");
 			Zelle.addEventListener("click", function(){
 				if (xStart == "nichts" && yStart == "nichts") {
 					xStart = this.getAttribute("x");
@@ -48,7 +44,9 @@ function fillGrid(s){
 		case "K":
 			let inhalt = document.createTextNode(entry);
 			let index = x + "," + y;
-			document.getElementById(index).appendChild(inhalt);
+			//document.getElementById(index).appendChild(inhalt);
+			let target = document.getElementById(index);
+			target.setAttribute("class", target.getAttribute("class") + " " + entry);
 		case "_":
 			x = x + 1;
 			if(x === 9){

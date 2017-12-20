@@ -1,7 +1,7 @@
 body {
-	background-image: url("background1.jpg");
+	background-image: url("background2.jpg");
 	background-size: cover;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	background-position: 50% 0px;
 }
 #linker {
@@ -29,31 +29,63 @@ body {
 	border: 1px solid #000;
 	background-color: gray;
 }
-#Tabelle {
-	margin-left: auto;
-	margin-right: auto;
-	border: 5px solid black;
-	border-collapse: collapse;
-}
 #help {
 	color: white;
 	background-color: rgba(0, 0, 0, 0.6);
 }
-.fieldbutton {
-	text-align: center;
-	width: 9%;
-	padding: 10px;
-	display: inline-block;
-}
-.fieldbutton.white {
-	background-color: white;
-	color: black;
-}
-.fieldbutton.black {
-	background-color: black;
-	color: white;
-}
+
 #Gamefield {
-	margin: auto;
-	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 10px solid rgb(102, 34, 0);
+}
+
+@media (min-width: 120px) {
+	.fieldbutton {
+		padding: 15px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+}
+@media (min-width: 480px) {
+	.fieldbutton {
+		padding: 20px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+}
+@media (min-width: 600px) {
+	.fieldbutton {
+		padding: 25px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+}
+@media (min-width: 1000px) {
+	.fieldbutton {
+		padding: 30px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+}
+
+.fieldbutton.K {
+	background-image: url("king.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.fieldbutton.D {
+	background-image: url("def.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.fieldbutton.A {
+	background-image: url("atk.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.fieldbutton.X {
+	background-image: url("castle.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
