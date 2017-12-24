@@ -8,6 +8,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	
     	<!-- Stylesheet -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
     	
     	<!-- Javascript -->
@@ -24,6 +25,14 @@
                 <th><a href="/controls">Steuerung</a></th>
             </tr>
         </table>
+        <div class="dropdown">
+        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu<span class="caret"></span></button>
+        	<ul class="dropdown-menu">
+        		<li><a href="/tablut/9">Neustart 9</a></li>
+        		<li><a href="/tablut/11">Neustart 11</a></li>
+        		<li><a href="/tablut/13">Neustart 12</a></li>
+        	</ul>
+        </div>
     </head>
     <body>
         <div>@content</div>

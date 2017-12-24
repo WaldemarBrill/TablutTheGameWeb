@@ -5,11 +5,12 @@ function test() {
 function createGamefield() {
 	let xStart = "nichts";
 	let yStart = "nichts";
-	for (let y = 0; y < 9; y++) {
+	let size = document.getElementById("Gamefield").getAttribute("size");
+	for (let y = 0; y < size; y++) {
 		let Zeile = document.createElement("tr");
 		Zeile.id = "Zeile" + y;
 		document.getElementById("Gamefield").appendChild(Zeile);
-		for (let x = 0; x < 9; x++) {
+		for (let x = 0; x < size; x++) {
 			let Zelle = document.createElement("button");
 			Zelle.id = x+","+y;
 			Zelle.setAttribute("x", x);
@@ -35,6 +36,7 @@ function fillGrid(s){
 	let fieldArray = s.split(" ");
 	let x = 0;
 	let y = 0;
+	let size = document.getElementById("Gamefield").getAttribute("size");
 	fieldArray.forEach(function(entry){
 		
 		switch(entry) {
@@ -49,7 +51,7 @@ function fillGrid(s){
 			target.setAttribute("class", target.getAttribute("class") + " " + entry);
 		case "_":
 			x = x + 1;
-			if(x === 9){
+			if(x >= size){
 				x = 0;
 				y = y + 1;
 			}
@@ -88,6 +90,7 @@ function connectWebSocket() {
 }
 
 $( document ).ready(function() {
+	//$('#dropbtn').click(dropdownMenu);
 	createGamefield();
 	connectWebSocket();
 });

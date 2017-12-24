@@ -29,6 +29,13 @@ body {
 	border: 1px solid #000;
 	background-color: gray;
 }
+.dropdown-menu li a {
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-right: 10px;
+	background-color: rgb(0, 100, 0);
+}
+
 #help {
 	color: white;
 	background-color: rgba(0, 0, 0, 0.6);
@@ -40,29 +47,60 @@ body {
 	border: 10px solid rgb(102, 34, 0);
 }
 
+
 @media (min-width: 120px) {
-	.fieldbutton {
+	#Gamefield[size="9"] .fieldbutton {
 		padding: 15px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+	#Gamefield[size="11"] .fieldbutton {
+		padding: 10px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+	#Gamefield[size="13"] .fieldbutton {
+		padding: 10px;
 		display: inline-block;
 		background-color: rgb(255, 204, 102);
 	}
 }
 @media (min-width: 480px) {
-	.fieldbutton {
+	#Gamefield[size="9"] .fieldbutton {
 		padding: 20px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+		#Gamefield[size="11"] .fieldbutton {
+		padding: 15px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+	#Gamefield[size="13"] .fieldbutton {
+		padding: 15px;
 		display: inline-block;
 		background-color: rgb(255, 204, 102);
 	}
 }
 @media (min-width: 600px) {
-	.fieldbutton {
+	#Gamefield[size="9"] .fieldbutton {
 		padding: 25px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+		#Gamefield[size="11"] .fieldbutton {
+		padding: 25px;
+		display: inline-block;
+		background-color: rgb(255, 204, 102);
+	}
+	#Gamefield[size="13"] .fieldbutton {
+		padding: 20px;
 		display: inline-block;
 		background-color: rgb(255, 204, 102);
 	}
 }
 @media (min-width: 1000px) {
-	.fieldbutton {
+	#Gamefield[size="9"] .fieldbutton {
 		padding: 30px;
 		display: inline-block;
 		background-color: rgb(255, 204, 102);
