@@ -29,12 +29,7 @@ body {
 	border: 1px solid #000;
 	background-color: gray;
 }
-.dropdown-menu li a {
-	padding-left: 5px;
-	padding-top: 5px;
-	padding-right: 10px;
-	background-color: rgb(0, 100, 0);
-}
+
 
 #help {
 	color: white;
@@ -107,22 +102,22 @@ body {
 	}
 }
 
-.fieldbutton.K {
+.fieldbutton[figure="K"] {
 	background-image: url("king.webp");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-.fieldbutton.D {
+.fieldbutton[figure="D"] {
 	background-image: url("def.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-.fieldbutton.A {
+.fieldbutton[figure="A"] {
 	background-image: url("atk.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-.fieldbutton.X {
+.fieldbutton[figure="X"] {
 	background-image: url("castle.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;

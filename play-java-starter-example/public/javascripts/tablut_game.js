@@ -1,3 +1,5 @@
+var websocket = new WebSocket("ws://localhost:9000/websocket");
+
 function test() {
 	alert("test");
 }
@@ -22,7 +24,29 @@ function createGamefield() {
 					yStart = this.getAttribute("y");
 				} else {
 					let command = xStart + "-" + yStart + "-" + this.getAttribute("x") + "-" + this.getAttribute("y");
-					window.location.href = "/tablut/" + command;
+					if(websocket.readyState === websocket.CLOSED) {
+						websocket = new WebSocket("ws://localhost:9000/websocket");
+						websocket.onopen = function(event) {
+					        console.log("Connected to Websocket");
+					        websocket.send(command);
+					    };
+					    websocket.onclose = function () {
+					        console.log('Connection with Websocket Closed!');
+					    };
+
+					    websocket.onerror = function (error) {
+					        console.log('Error in Websocket Occured: ' + error);
+					    };
+
+					    websocket.onmessage = function (e) {
+					        console.log("Connection send a Message: " + e.data)
+					        if (typeof e.data === "string") {
+					        	fillGrid(e.data);
+					        }
+					    };
+					} else {
+						websocket.send(command);
+					}
 					xStart = "nichts";
 					yStart = "nichts";
 				}
@@ -37,6 +61,15 @@ function fillGrid(s){
 	let x = 0;
 	let y = 0;
 	let size = document.getElementById("Gamefield").getAttribute("size");
+	
+	for (let i = 0; i < size; i++) {
+		for (let j = 0; j < size; j++) {
+			let index = j + "," + i;
+			let target = document.getElementById(index);
+			target.setAttribute("figure", "");
+		}
+	}
+	
 	fieldArray.forEach(function(entry){
 		
 		switch(entry) {
@@ -48,7 +81,7 @@ function fillGrid(s){
 			let index = x + "," + y;
 			//document.getElementById(index).appendChild(inhalt);
 			let target = document.getElementById(index);
-			target.setAttribute("class", target.getAttribute("class") + " " + entry);
+			target.setAttribute("figure", entry);
 		case "_":
 			x = x + 1;
 			if(x >= size){
@@ -63,14 +96,8 @@ function fillGrid(s){
 }
 
 function connectWebSocket() {
-	var websocket = new WebSocket("ws://localhost:9000/websocket");
-    websocket.setTimeout
-
     websocket.onopen = function(event) {
         console.log("Connected to Websocket");
-        websocket.send(JSON.stringify({
-        	update: "do it"
-        }));
     };
 
     websocket.onclose = function () {
@@ -93,6 +120,7 @@ $( document ).ready(function() {
 	//$('#dropbtn').click(dropdownMenu);
 	createGamefield();
 	connectWebSocket();
+	websocket.send("update");
 });
 
 
