@@ -1,8 +1,6 @@
-var websocket = new WebSocket("ws://localhost:9000/websocket");
-
-function test() {
-	alert("test");
-}
+var websocket;
+var status_vue;
+var spiel_vue;
 
 function createGamefield() {
 	let xStart = "nichts";
@@ -22,30 +20,17 @@ function createGamefield() {
 				if (xStart == "nichts" && yStart == "nichts") {
 					xStart = this.getAttribute("x");
 					yStart = this.getAttribute("y");
+					status_vue.status_list.push(xStart + "-" + yStart + " nach ");
 				} else {
+					status_vue.status_list.push(status_vue.status_list.pop() + this.getAttribute("x") + "-" + this.getAttribute("y"));
 					let command = xStart + "-" + yStart + "-" + this.getAttribute("x") + "-" + this.getAttribute("y");
+					
+					
 					if(websocket.readyState === websocket.CLOSED) {
-						websocket = new WebSocket("ws://localhost:9000/websocket");
-						websocket.onopen = function(event) {
-					        console.log("Connected to Websocket");
-					        websocket.send(command);
-					    };
-					    websocket.onclose = function () {
-					        console.log('Connection with Websocket Closed!');
-					    };
-
-					    websocket.onerror = function (error) {
-					        console.log('Error in Websocket Occured: ' + error);
-					    };
-
-					    websocket.onmessage = function (e) {
-					        console.log("Connection send a Message: " + e.data)
-					        if (typeof e.data === "string") {
-					        	fillGrid(e.data);
-					        }
-					    };
+						connectWebSocket(command);
 					} else {
 						websocket.send(command);
+						websocket.send("player");
 					}
 					xStart = "nichts";
 					yStart = "nichts";
@@ -95,9 +80,13 @@ function fillGrid(s){
 	});
 }
 
-function connectWebSocket() {
+function connectWebSocket(command) {
+	websocket = new WebSocket("ws://localhost:9000/websocket")
+	
     websocket.onopen = function(event) {
         console.log("Connected to Websocket");
+        websocket.send(command);
+        websocket.send("player");
     };
 
     websocket.onclose = function () {
@@ -111,16 +100,58 @@ function connectWebSocket() {
     websocket.onmessage = function (e) {
         console.log("Connection send a Message: " + e.data)
         if (typeof e.data === "string") {
-        	fillGrid(e.data);
+        	if (e.data === "player1") {
+        		spiel_vue.toggle_player_one();
+        	} else if (e.data === "player2") {
+        		spiel_vue.toggle_player_two();
+        	} else {
+        		fillGrid(e.data);
+        	}
         }
     };
 }
 
+
+
 $( document ).ready(function() {
-	//$('#dropbtn').click(dropdownMenu);
 	createGamefield();
-	connectWebSocket();
-	websocket.send("update");
+	connectWebSocket("update");
+	
+	status_vue = new Vue ({
+		el: "#status_elemente",
+		
+		data: {
+			status_list: [],
+		},
+	});
+	
+	spiel_vue = new Vue ({
+		el: "#player_turn",
+		
+		data: {
+			player_turn: true
+		},
+		
+		methods: {
+			toggle_player_one() {
+				this.player_turn = true;
+			},
+			toggle_player_two() {
+				this.player_turn = false;
+			}
+		},
+		
+		computed: {
+			get_player_turn() {
+				if (this.player_turn) {
+					return "Spieler 1 ist am Zug";
+				} else {
+					return "Spieler 2 ist am Zug";
+				}
+			}
+		},
+		
+	});
 });
 
 
