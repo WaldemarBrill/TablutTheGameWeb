@@ -23,12 +23,12 @@ class TablutController @Inject()(cc: ControllerComponents) (implicit system: Act
 	}
 	
 	def game = Action {
-		Ok(views.html.game(gc.buildString(), gc.getMatrixSize()))
+		Ok(views.html.game())
 	}
 	
 	def command(command:String) = Action {
 		gc.funktion(command)
-		Ok(views.html.game(gc.buildString(), gc.getMatrixSize()))
+		Ok(gc.getMatrixSize().toString())
 	}
 	
 	def help = Action {

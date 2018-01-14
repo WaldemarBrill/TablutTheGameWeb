@@ -46,7 +46,7 @@ function fillGrid(s){
 	let x = 0;
 	let y = 0;
 	let size = document.getElementById("Gamefield").getAttribute("size");
-	
+	if (size == 0) {return;}
 	for (let i = 0; i < size; i++) {
 		for (let j = 0; j < size; j++) {
 			let index = j + "," + i;
@@ -111,11 +111,62 @@ function connectWebSocket(command) {
     };
 }
 
+function field9() {
+	$.ajax({
+		type: "GET",
+		url: "/tablut/9",
+		dataType: "text",
+		complete: function(data) {
+			$("#Gamefield").attr("size", "9");
+			createGamefield();
+			connectWebSocket(data.responseText);
+			
+		}
+	})
+}
 
+function field11() {
+	$.ajax({
+		type: "GET",
+		url: "/tablut/11",
+		dataType: "text",
+		complete: function(data) {
+			$("#Gamefield").attr("size", "11");
+			createGamefield();
+			connectWebSocket(data.responseText);
+			
+		}
+	})
+}
+
+function field13() {
+	$.ajax({
+		type: "GET",
+		url: "/tablut/13",
+		dataType: "text",
+		complete: function(data) {
+			$("#Gamefield").attr("size", "13");
+			createGamefield();
+			connectWebSocket(data.responseText);
+			
+		}
+	})
+}
 
 $( document ).ready(function() {
 	createGamefield();
-	connectWebSocket("update");
+	
+	$(function(){
+		$(".dropdown-menu").on("click", "li", function(event){
+			if ($(this).text() === "Neustart 9 x 9") {
+				field9();
+			} else if ($(this).text() === "Neustart 11 x 11") {
+				field11();
+			} else if ($(this).text() === "Neustart 13 x 13") {
+				field13();
+			}
+		})
+	})
 	
 	status_vue = new Vue ({
 		el: "#status_elemente",
@@ -152,6 +203,8 @@ $( document ).ready(function() {
 		},
 		
 	});
+
+	connectWebSocket("update");
 });
 
 
