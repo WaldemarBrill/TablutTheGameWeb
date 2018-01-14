@@ -27,16 +27,16 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param ex               The execution context.
  */
 class ForgotPasswordController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
-  authTokenService: AuthTokenService,
-  mailerClient: MailerClient
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    userService: UserService,
+    authTokenService: AuthTokenService,
+    mailerClient: MailerClient
 )(
-  implicit
-  webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder,
-  ex: ExecutionContext
+    implicit
+    webJarsUtil: WebJarsUtil,
+    assets: AssetsFinder,
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   /**

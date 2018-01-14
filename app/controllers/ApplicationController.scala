@@ -20,12 +20,12 @@ import scala.concurrent.Future
  * @param assets      The Play assets finder.
  */
 class ApplicationController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv]
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv]
 )(
-  implicit
-  webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder
+    implicit
+    webJarsUtil: WebJarsUtil,
+    assets: AssetsFinder
 ) extends AbstractController(components) with I18nSupport {
 
   /**

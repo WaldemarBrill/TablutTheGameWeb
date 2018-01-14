@@ -24,14 +24,14 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param ex                     The execution context.
  */
 class SocialAuthController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
-  authInfoRepository: AuthInfoRepository,
-  socialProviderRegistry: SocialProviderRegistry
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    userService: UserService,
+    authInfoRepository: AuthInfoRepository,
+    socialProviderRegistry: SocialProviderRegistry
 )(
-  implicit
-  ex: ExecutionContext
+    implicit
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport with Logger {
 
   /**

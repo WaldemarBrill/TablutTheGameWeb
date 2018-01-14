@@ -30,17 +30,17 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param ex                     The execution context.
  */
 class ResetPasswordController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
-  authInfoRepository: AuthInfoRepository,
-  passwordHasherRegistry: PasswordHasherRegistry,
-  authTokenService: AuthTokenService
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    userService: UserService,
+    authInfoRepository: AuthInfoRepository,
+    passwordHasherRegistry: PasswordHasherRegistry,
+    authTokenService: AuthTokenService
 )(
-  implicit
-  webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder,
-  ex: ExecutionContext
+    implicit
+    webJarsUtil: WebJarsUtil,
+    assets: AssetsFinder,
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   /**

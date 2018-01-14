@@ -34,18 +34,18 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param assets                 The Play assets finder.
  */
 class SignInController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
-  credentialsProvider: CredentialsProvider,
-  socialProviderRegistry: SocialProviderRegistry,
-  configuration: Configuration,
-  clock: Clock
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    userService: UserService,
+    credentialsProvider: CredentialsProvider,
+    socialProviderRegistry: SocialProviderRegistry,
+    configuration: Configuration,
+    clock: Clock
 )(
-  implicit
-  webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder,
-  ex: ExecutionContext
+    implicit
+    webJarsUtil: WebJarsUtil,
+    assets: AssetsFinder,
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   /**

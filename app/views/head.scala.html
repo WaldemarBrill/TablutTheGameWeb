@@ -1,4 +1,11 @@
-@(title: String)(content: Html)
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import play.twirl.api.Html
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(title: String, user: Option[models.User] = None)(content: Html)(implicit request: RequestHeader, messages: Messages, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
+
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -9,14 +16,14 @@
     	
     	<!-- Stylesheet -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
+    	<link rel="stylesheet" media="screen" href="@assets.path("styles/style.css")">
     	
     	<!-- VUE -->
-    	<script src="@routes.Assets.versioned("javascripts/vue.js")"></script>
+    	<script src="@assets.path("javascripts/vue.js")"></script>
     	
     	<!-- Javascript -->
     	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    	<script src="@routes.Assets.versioned("javascripts/tablut_game.js")"></script>
+    	<script src="@assets.path("javascripts/tablut_game.js")"></script>
     	
     	
     	

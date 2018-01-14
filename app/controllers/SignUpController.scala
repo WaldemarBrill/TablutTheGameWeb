@@ -35,19 +35,19 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param ex                     The execution context.
  */
 class SignUpController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
-  authInfoRepository: AuthInfoRepository,
-  authTokenService: AuthTokenService,
-  avatarService: AvatarService,
-  passwordHasherRegistry: PasswordHasherRegistry,
-  mailerClient: MailerClient
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    userService: UserService,
+    authInfoRepository: AuthInfoRepository,
+    authTokenService: AuthTokenService,
+    avatarService: AvatarService,
+    passwordHasherRegistry: PasswordHasherRegistry,
+    mailerClient: MailerClient
 )(
-  implicit
-  webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder,
-  ex: ExecutionContext
+    implicit
+    webJarsUtil: WebJarsUtil,
+    assets: AssetsFinder,
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   /**

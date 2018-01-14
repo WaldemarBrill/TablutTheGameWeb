@@ -20,11 +20,11 @@ import scala.language.postfixOps
  * @param ex           The execution context.
  */
 class AuthTokenServiceImpl @Inject() (
-  authTokenDAO: AuthTokenDAO,
-  clock: Clock
+    authTokenDAO: AuthTokenDAO,
+    clock: Clock
 )(
-  implicit
-  ex: ExecutionContext
+    implicit
+    ex: ExecutionContext
 ) extends AuthTokenService {
 
   /**

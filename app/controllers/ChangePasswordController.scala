@@ -29,16 +29,16 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param ex                     The execution context.
  */
 class ChangePasswordController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  credentialsProvider: CredentialsProvider,
-  authInfoRepository: AuthInfoRepository,
-  passwordHasherRegistry: PasswordHasherRegistry
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    credentialsProvider: CredentialsProvider,
+    authInfoRepository: AuthInfoRepository,
+    passwordHasherRegistry: PasswordHasherRegistry
 )(
-  implicit
-  webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder,
-  ex: ExecutionContext
+    implicit
+    webJarsUtil: WebJarsUtil,
+    assets: AssetsFinder,
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   /**

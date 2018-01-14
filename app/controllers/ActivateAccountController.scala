@@ -25,14 +25,14 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param ex               The execution context.
  */
 class ActivateAccountController @Inject() (
-  components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
-  authTokenService: AuthTokenService,
-  mailerClient: MailerClient
+    components: ControllerComponents,
+    silhouette: Silhouette[DefaultEnv],
+    userService: UserService,
+    authTokenService: AuthTokenService,
+    mailerClient: MailerClient
 )(
-  implicit
-  ex: ExecutionContext
+    implicit
+    ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   /**
